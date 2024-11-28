@@ -11,7 +11,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -22,8 +21,10 @@ jobs:
         dotnet-version: 8.0.x
     - name: Restore dependencies
       run: dotnet restore
+      working-directory: cicd
     - name: Build
       run: dotnet build --no-restore
+      working-directory: cicd
     - name: Test
       run: dotnet test --no-build --verbosity normal
       working-directory: cicd
